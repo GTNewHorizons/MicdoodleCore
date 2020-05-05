@@ -213,4 +213,10 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+*.
+*.ipr
+*.iws
 *.iml
+.idea
+.gradle
+temporary/

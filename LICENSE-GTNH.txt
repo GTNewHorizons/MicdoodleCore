@@ -1,0 +1,7 @@
+Permission to modify, build, and distributed a modified version provided to the GTNH team by
+Radfast (Galacticraft Dev)  - https://github.com/micdoodle8/Galacticraft/issues/3452
+
+```
+Radfast: Yes, permission granted to fork the source and build a modified version of Galacticraft 1.7.10 for this purpose. 
+But you must make sure all support requests and issue reports for the modified version come to you, not here ...
+```

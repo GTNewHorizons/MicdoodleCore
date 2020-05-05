@@ -1,0 +1,66 @@
+
+def mcVersion = "1.7.10"
+def versionMajor = 3
+def versionMinor = 0
+def versionRev = 13
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge' // Add forge dependency
+apply plugin: 'idea'
+
+sourceSets.main {
+    java {
+        srcDirs = ['src/main/java', 'dependencies/main/java']
+    }
+    resources {
+        srcDirs = ['src/main/resources', 'dependencies/main/resources']
+    }
+}
+
+version = "${mcVersion}-${versionMajor}.${versionMinor}.${versionRev}-GTNH" // Set the version number
+group= "micdoodle8.mods.galacticraft"
+archivesBaseName = "MicdoodleCore"
+	
+minecraft {
+    version = "1.7.10-10.13.4.1448-1.7.10" // Forge version
+    runDir = "eclipse/assets" // This is where forge will download Minecraft assets
+}
+
+def commonManifest = {
+	// Add required coremod manifest attributes
+	attributes "FMLCorePlugin": "micdoodle8.mods.miccore.MicdoodlePlugin"
+	attributes "AccessTransformer": "micdoodlecore_at.cfg"
+}
+
+jar {
+	classifier = ''
+	manifest commonManifest
+}
+
+task devJar(type: Jar) {
+	from sourceSets.main.output
+	classifier = 'dev'
+	manifest commonManifest
+}
+
+// Tell the artifact system about our extra jars
+artifacts {
+	archives devJar
+}
+
