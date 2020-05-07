@@ -2,7 +2,7 @@
 def mcVersion = "1.7.10"
 def versionMajor = 3
 def versionMinor = 0
-def versionRev = 13
+def versionRev = "13-GTNH"
 
 buildscript {
     repositories {
@@ -24,22 +24,19 @@ buildscript {
 apply plugin: 'forge' // Add forge dependency
 apply plugin: 'idea'
 
-sourceSets.main {
-    java {
-        srcDirs = ['src/main/java', 'dependencies/main/java']
-    }
-    resources {
-        srcDirs = ['src/main/resources', 'dependencies/main/resources']
-    }
-}
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
-version = "${mcVersion}-${versionMajor}.${versionMinor}.${versionRev}-GTNH" // Set the version number
+
+version = "${mcVersion}-${versionMajor}.${versionMinor}.${versionRev}" // Set the version number
 group= "micdoodle8.mods.galacticraft"
 archivesBaseName = "MicdoodleCore"
 	
 minecraft {
-    version = "1.7.10-10.13.4.1448-1.7.10" // Forge version
-    runDir = "eclipse/assets" // This is where forge will download Minecraft assets
+    version = "1.7.10-10.13.4.1614-1.7.10" // Forge version
+    runDir = "run" // This is where forge will download Minecraft assets
 }
 
 def commonManifest = {
@@ -47,6 +44,28 @@ def commonManifest = {
 	attributes "FMLCorePlugin": "micdoodle8.mods.miccore.MicdoodlePlugin"
 	attributes "AccessTransformer": "micdoodlecore_at.cfg"
 }
+
+processResources
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+    exclude '**/Thumbs.db'
+}
+
 
 jar {
 	classifier = ''
