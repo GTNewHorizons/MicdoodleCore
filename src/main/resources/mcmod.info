@@ -5,7 +5,7 @@
   "description": "MicdoodleCore; Maintained by the GTNH team.",
   "version": "3.0.13-GTNH",
   "mcversion": "1.7.10",
-  "url": "http://www.micdoodle8.com/",
+  "url": "https://github.com/GTNewHorizons/MicdoodleCore",
   "updateUrl": "https://github.com/GTNewHorizons/GT-New-Horizons-Modpack",
   "authorList": [
     "micdoodle8, radfast, fishtaco"

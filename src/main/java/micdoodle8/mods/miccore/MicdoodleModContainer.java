@@ -21,10 +21,10 @@ public class MicdoodleModContainer extends DummyModContainer
 		ModMetadata meta = this.getMetadata();
 		meta.modId = "Micdoodlecore";
 		meta.name = "Micdoodle8 Core";
-		meta.updateUrl = "http://www.micdoodle8.com/";
-		meta.description = "Provides core features of Micdoodle8's mods";
-		meta.authorList = Arrays.asList("micdoodle8, radfast");
-		meta.url = "http://www.micdoodle8.com/";
+		meta.updateUrl = "https://github.com/GTNewHorizons/MicdoodleCore";
+		meta.description = "Provides core features of Micdoodle8's mods. Maintained by the GTNH team.";
+		meta.authorList = Arrays.asList("micdoodle8, radfast", "GTNH-Team");
+		meta.url = "https://github.com/GTNewHorizons/MicdoodleCore";
 	}
 	
 	@Override
